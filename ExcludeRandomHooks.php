@@ -1,8 +1,14 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 class ExcludeRandomHooks {
 	public static function onSpecialRandomGetRandomTitle( &$rand, &$isRedir, &$namespaces, &$extra, &$title ) {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig('main');
-		$wgExcludeRandomPages = $config->get('ExcludeRandomPages');
+		// Get the main config from MediaWikiServices
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		// Retrieve the array of pages to exclude from random selection
+		$wgExcludeRandomPages = $config->get( 'ExcludeRandomPages' );
 		if ( !is_array( $wgExcludeRandomPages ) || empty( $wgExcludeRandomPages ) ) {
 			return true;
 		}
