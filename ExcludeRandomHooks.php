@@ -13,7 +13,10 @@ class ExcludeRandomHooks {
 			return true;
 		}
 
-		$db = wfGetDB( DB_REPLICA );
+		// Replaces deprecated wfGetDB()
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$db = $lb->getConnection( DB_REPLICA );
+
 		foreach ( $wgExcludeRandomPages as $cond ) {
 			$pattern = $db->strencode( $cond );
 			$pattern = str_replace(
