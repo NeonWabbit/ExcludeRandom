@@ -7,7 +7,8 @@
  *
  * @ingroup Extensions
  * @author Matt Russell
- * @version 2.0.0
+ * @author Darien Dickinson
+ * @version 2.0.0_1.44-port
  * @link https://www.mediawiki.org/wiki/Extension:ExcludeRandom Documentation
  * @license BSD-3-Clause
  */
@@ -22,5 +23,5 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	);
 	return;
 } else {
-	die( 'This version of the ExcludeRandom extension requires MediaWiki 1.25+' );
+	die( 'This version of the ExcludeRandom extension requires MediaWiki 1.44+' );
 }
